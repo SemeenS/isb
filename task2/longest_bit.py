@@ -1,0 +1,45 @@
+from scipy import special
+
+
+def longest_bit_test(seq: str, pi_values: list) -> float:
+    """
+    The function checks sequence using test for the longest sequence in block
+    :param seq: our sequence
+    :param pi_values: const pi values
+    :return: result
+    """
+    n = len(seq)
+    m = 8
+
+    if n == 0:
+        raise ValueError("Sequence must not be empty")
+
+    v = [0, 0, 0, 0]
+
+    for i in range(0, len(seq), m):
+        block = seq[i : i + m]
+        max_len = current = 0
+
+        for bit in block:
+            if bit == "1":
+                current = current + 1
+            else:
+                current = 0
+            max_len = max(max_len, current)
+
+        match max_len:
+            case max_len if max_len <= 1:
+                v[0] += 1
+            case 2:
+                v[1] += 1
+            case 3:
+                v[2] += 1
+            case max_len if max_len >= 4:
+                v[3] += 1
+
+    xi_square = sum(
+        ((v[i] - 16 * pi_values[i]) ** 2) / (16 * pi_values[i]) for i in range(len(v))
+    )
+    pi = special.gammainc((3 / 2), (xi_square / 2))
+
+    return pi
