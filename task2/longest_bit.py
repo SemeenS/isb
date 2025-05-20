@@ -17,7 +17,12 @@ def longest_bit_test(seq: str, pi_values: list) -> float:
     v = [0, 0, 0, 0]
 
     for i in range(0, len(seq), m):
-        block = seq[i : i + m]
+        block = []
+        for j in range(m):
+            if i + j < len(seq):
+                block.append(seq[i + j])
+            else:
+                break
         max_len = current = 0
 
         for bit in block:
