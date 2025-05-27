@@ -11,15 +11,7 @@ def identical_bit_test(sequence: str) -> float:
         raise ValueError("Sequence must not be empty")
 
     n = len(sequence)
-    res = 0
-
-    for bit in sequence:
-        if bit == "1":
-            res += 1
-        elif bit == "0":
-            res += 0
-        elif bit != "0":
-            raise ValueError(f"Invalid symbol '{bit}' in sequence.")
+    res = sequence.count('1')
 
     zeta = res / n
 
