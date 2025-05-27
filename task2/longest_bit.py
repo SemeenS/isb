@@ -1,4 +1,6 @@
 from scipy import special
+from work_with_json_files import *
+
 
 
 def longest_bit_test(seq: str, pi_values: list) -> float:
@@ -8,8 +10,9 @@ def longest_bit_test(seq: str, pi_values: list) -> float:
     :param pi_values: const pi values
     :return: result
     """
+    settings = read_json_file("settings.json")
     n = len(seq)
-    m = 8
+    m = settings["m"]
 
     if n == 0:
         raise ValueError("Sequence must not be empty")
@@ -39,7 +42,7 @@ def longest_bit_test(seq: str, pi_values: list) -> float:
                 v[1] += 1
             case 3:
                 v[2] += 1
-            case max_len if max_len >= 4:
+            case _:
                 v[3] += 1
 
     xi_square = sum(
