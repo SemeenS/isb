@@ -1,7 +1,10 @@
 #include <iostream>
 #include <random>
 #include <bitset>
-
+/**
+ * generates a 128-bit random sequence using:
+ * returns 0 on successful completion of the generation
+ */
 int main() {
     std::random_device rd;
     std::mt19937 gen(rd());
