@@ -2,5 +2,6 @@
   "cpp_seq": "task1/cpp.txt",
   "java_seq": "task1/java_seq.txt",
   "result": "res.json",
-  "pi_values": [0.2148, 0.3672, 0.2305, 0.1875]
+  "pi_values": [0.2148, 0.3672, 0.2305, 0.1875],
+  "m": 8
 }
